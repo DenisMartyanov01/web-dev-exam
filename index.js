@@ -38,8 +38,6 @@ function guessSearch(string) {
             return response.json(); 
         })
         .then(data => {
-            //console.log(data);
-            //console.log(data.length); 
 
             document.getElementById("guess1").textContent = '';
             document.getElementById("guess2").textContent = '';
@@ -113,7 +111,6 @@ function sortGoods() {
 
     if (goods.length) {
 
-        console.log(goods);
         goods.sort(
 
             function(a, b) {

@@ -156,7 +156,6 @@ function loadCarts(string) {
         }).then(data => {
 
             goods = data;
-            console.log(goods);
             drawCarts();
             if (data.length == 0)
                 document.getElementById("nothing_added").style.display = "flex";
@@ -242,7 +241,6 @@ form.onsubmit = async (event) => {
         });
 
         if (response.ok) {
-            console.log(response);
             localStorage.clear();
             eraseCarts();
             document.getElementById("nothing_added").style.display = "flex";

@@ -228,7 +228,6 @@ function loadOrders() {
             return response.json();
         }).then(data => {
             orders = data;
-            console.log(data);
             drawTable();
         });
 }
@@ -257,7 +256,6 @@ async function deleteOrder() {
                 { method: 'DELETE' });
 
         if (response.ok) {
-            console.log(response);
             loadCarts();
             sleep(1000);
             showNotification("Заказ удален!", "lightgreen");
