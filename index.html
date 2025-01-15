@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container_horizontal">
+            <img src="imgs/logo.png" alt="Logo">
+            <div class="container_horizontal">
+                <div>
+                    <textarea name="" id="search" maxlength="32" rows="1"></textarea>
+                    <div id="search_words" class="container_vertical">
+                        <p id="guess1">hello</p>
+                        <p id="guess2">hello2</p>
+                        <p id="guess3">hello3</p>
+                    </div>
+                </div>
+                <button id="search_button">Найти</button>
+            </div>
+            <div class="container_horizontal">
+                <a href="bin.html"><img src="imgs/bin.jpg" alt="bin"></a>
+                <a href="profile.html"><img src="imgs/profile.jpg" alt="profile"></a>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <main>
+            <div class="allert" id="allert">
+                <div class="container_horizontal">
+                    <h3 id="allert_text">Текст сообщения</h3>
+                    <button id="close"><img src="imgs/close.png" alt="profile"></button>
+                </div>
+            </div>
+            
+            <div class="container_horizontal">
+                <div class="filter">
+                    <div class="st">
+                        <div class="filter_block">
+                            <h2>Категории</h2>
+                            <ul>
+                                <li><input type="checkbox">Категория 1</li>
+                                <li><input type="checkbox">Категория 2</li>
+                                <li><input type="checkbox">Категория 3</li>
+                                <li><input type="checkbox">Категория 4</li>
+                                <li><input type="checkbox">Категория 5</li>
+                            </ul>
+                        </div>
+
+                        <div class="filter_block">
+                            <h2>Стоимость</h2>
+                            <div class="container_horizontal">
+                                <div class="price_block">
+                                    <h4>От</h4>
+                                    <input type="number">
+                                </div>
+                                <div class="price_block">
+                                    <h4>До</h4>
+                                    <input type="number">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter_radio">
+                            <input type="radio">
+                            <h4 class="short_text">Только товары со скидками</h4>
+                        </div>
+
+                        <div class="filter_block apply_button">
+                            <button>Применить</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="container_vertical main_content">
+                    <div class="container_horizontal">
+                        <h2>Каталог</h2>
+
+                        <select name="" id="sort">
+                            <option value="raitMax">По убыванию рейтинга</option>
+                            <option value="raitMin">По возрастанию рейтинга</option>
+                            <option value="priceMax">По убыванию цены</option>
+                            <option value="priceMin">По возрастанию цены</option>
+                        </select>
+                    </div>
+                    <h4 id="bad_search" style="display: none;">Ничего не найдено</h4>
+                    <div id="carts"></div>
+                    
+                    <button id="load_more">Загрузить еще</button>
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <h4>2025</h4>        
+        </footer>
+    </div>
+    <script src="index.js"></script>
+
+</body>
+</html>

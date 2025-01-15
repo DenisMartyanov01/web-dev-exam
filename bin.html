@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container_horizontal">
+            <img src="imgs/logo.png" alt="Logo">
+            <div class="container_horizontal">
+                <a href="profile.html"><img src="imgs/profile.jpg" alt="profile"></a>
+                <a href="index.html"><img src="imgs/list.png" alt="main"></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <main>
+            <div class="allert" id="allert">
+                <div class="container_horizontal">
+                    <h3 id="allert_text">Текст сообщения</h3>
+                    <button id="close"><img src="imgs/close.png" alt="profile"></button>
+                </div>
+            </div>
+        
+            <div class="main_content">
+                <h2>Корзина</h2><br/>
+                <h4 id="nothing_added">Ничего не добавлено</h4>
+                <div id="carts"></div>
+            </div>
+
+            <div class="form">
+                <h2>Оформление заказа</h2>
+
+                <form action="" id="form">
+                    <div class="container_horizontal">
+                        <div class="container_vertical">
+                            <label for="name">Имя</label>
+                            <input type="text" name="name" id="name" required>   <br />
+
+                            <label for="phone">Номер телефона</label> 
+                            <input type="text" name="phone" id="phone" required>   <br />
+
+                            <label for="email">Email</label> 
+                            <input type="email" name="email" id="email" required> 
+                            
+                            <div class="container_horizontal" id="sub">
+                                <input type="checkbox" name="subscribe" id="sub">
+                                <h4>Подписаться на рассылку</h4>
+                            </div> <br />
+
+                            <label for="comment">Комментарий</label>
+                            <input type="text" name="comment" id="comment">
+                        </div>
+                    
+                        <div class="container_vertical">
+                            <label for="address">Адрс доставки</label>
+                            <input type="text" name="address" id="address" required>   <br />
+
+                            <label for="date1">Дата доставки</label>
+                            <input type="date" value="2025-02-22" name="date1" id="delivery_date" required>   <br />
+
+                            <label for="date2">Временной интервал доставки</label>
+                            <select name="" id="delivery_interval">
+                                <option value="08:00-12:00">08:00-12:00</option>
+                                <option value="12:00-14:00">12:00-14:00</option>
+                                <option value="14:00-18:00">14:00-18:00</option>
+                                <option value="18:00-22:00">18:00-22:00</option>
+                            </select><br />
+
+                            <h3 id="final_price"></h3>
+                            <h4 id="delivery_price"></h4> <br />
+
+                            <div class="container_horizontal">
+                                <button type="reset">Сбросить</button>
+                                <button type="submit">Оформить</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+        </main>
+
+        <div class="space"></div>
+        <footer>
+            <h4>2025</h4>        
+        </footer>
+    </div>
+
+    <script src="bin.js"></script>
+
+</body>
+</html>

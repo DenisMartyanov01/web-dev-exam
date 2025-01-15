@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container_horizontal">
+            <img src="imgs/logo.png" alt="Logo">
+            <div class="container_horizontal">
+                <a href="index.html"><img src="imgs/list.png" alt="main"></a>
+                <a href="bin.html"><img src="imgs/bin.jpg" alt="bin"></a>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <main>
+            <div class="allert" id="allert">
+                <div class="container_horizontal">
+                    <h3 id="allert_text">Текст сообщения</h3>
+                    <button id="close"><img src="imgs/close.png" alt="profile"></button>
+                </div>
+            </div>
+            <div class="main_content">
+
+                <div class="allert">
+                    <div class="container_horizontal">
+                        <h3>Текст сообщения</h3>
+                        <button id="close"><img src="imgs/close.png" alt="profile"></button>
+                    </div>
+                </div>
+                <h2>Заказы</h2>
+                <h4 id="no_orders">Ничего не заказано</h4>
+                <dialog class="dialog" id="show">
+                    <p>Просмотр заказа</p>
+                    <div class="container">
+                        <h4>Дата оформления</h4>
+                        <p id="date1"></p>
+                        <h4>Имя</h4>
+                        <p id="name1"></p>
+                        <h4>Номер телефона</h4>
+                        <p id="phone1"></p>
+                        <h4>Email</h4>
+                        <p id="email1"></p>
+                        <h4>Адрес доставки</h4>
+                        <p id="address1"></p>
+                        <h4>Дата доставки</h4>
+                        <p id="date2"></p>
+                        <h4>Время доставки</h4>
+                        <p id="time1"></p>
+                        <h4>Состав заказа</h4>
+                        <p id="names1"></p>
+                        <h4>Стоимость</h4>
+                        <p id="price1"></p>
+                        <h4>Комментарий</h4>
+                        <p id="coment1"></p>
+                    </div>
+                    <button onClick="show.style.display = 'none'">Ok</button>
+                </dialog>
+
+                <dialog class="dialog" id="edit">
+                    <p>Редактирование заказа</p>
+                    <form action="" id="formEdit">
+                        <div class="container">
+                            <h4>Дата оформления</h4>
+                            <p id="date21"></p>
+                            <h4>Имя</h4>
+                            <input type="text" name="name" id="name21">
+                            <h4>Email</h4>
+                            <input type="text" name="email" id="email21">
+                            <h4>Номер телефона</h4>
+                            <input type="text" name="phone" id="phone21">
+                            <h4>Адрес доставки</h4>
+                            <input type="text" name="address" id="address21">
+                            <h4>Дата доставки</h4>
+                            <input type="date2" name="date" id="date22">
+                            <h4>Время доставки</h4>
+                            <select name="" id="time21">
+                                <option value="08:00-12:00">08:00-12:00</option>
+                                <option value="12:00-14:00">12:00-14:00</option>
+                                <option value="14:00-18:00">14:00-18:00</option>
+                                <option value="18:00-22:00">18:00-22:00</option>
+                            </select>
+                            <h4>Состав заказа</h4>
+                            <p id="names21"></p>
+                            <h4>Стоимость</h4>
+                            <p id="price21"></p>
+                            <h4>Комментарий</h4>
+                            <input type="text" name="comment" id="comment21">
+                        </div>
+                        <div class="container_horizontal">
+                            <button type="reset" onClick="edit.style.display = 'none'">Отмена</button>
+                            <button type="submit" onClick="edit.style.display = 'none'">Сохранить</button>
+                        </div>
+                    </form>
+                </dialog>
+
+                <dialog class="dialog" id="erase">
+                    <p>Удаление заказа</p>
+                    <div>
+                        <p>Вы уверены, что хотите удалить заказ?</p>
+                    </div>
+                    <div class="container_horizontal">
+                        <button onClick="erase.style.display = 'none'">Нет</button>
+                        <button onClick="deleteOrder()">Да</button>
+                    </div>
+                </dialog>
+
+                <table class="table">
+                    <thead>
+                        <tr class="tb_info">
+                            <th>№</th>
+                            <th>Дата оформления</th>
+                            <th>Состав заказа</th>
+                            <th>Стоимость</th>
+                            <th>Доставка</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            <h4>2025</h4>        
+        </footer>
+    </div>
+
+    <script src="profile.js"></script>
+
+</body>
+</html>
