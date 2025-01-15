@@ -62,7 +62,7 @@ function calculatePrice(order) {
 
     const _date = new Date(order.delivery_date.value);
 
-    if (_date.getDay() == 6)
+    if (_date.getDay() == 6 || _date.getDay() == 0)
         d_price += 300;
     else {
         if (order.delivery_interval.value == "18:00-22:00")
