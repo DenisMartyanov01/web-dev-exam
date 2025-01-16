@@ -1,5 +1,5 @@
 const URL = "https://edu.std-900.ist.mospolytech.ru/exam-2024-1/api/";
-const apiKey = '74902033-57f7-417f-9e55-5a53ba870cb9';
+const apiKey = 'f3d6a192-e512-4e8c-a56f-7488056b8083';
 
 let goods;
 let orders;
