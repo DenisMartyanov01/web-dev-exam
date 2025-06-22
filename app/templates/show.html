@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="my-5">Просмотр данных животного</h1>
+    <div>
+        <div>
+            {% for photo in photos %}
+                <img src="{{ url_for('images', filename = photo) }}" alt="{{photo}}" style="max-width: 200px;">
+            {% endfor %}
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Имя</th>
+                    <td>{{ data['name'] }}</td>
+                </tr>
+                <tr>
+                    <th>Описание</th>
+                    <td>{{ data['description']|safe }}</td>
+
+                </tr>
+                <tr>
+                    <th>Возраст</th>
+                    <td>{{ data['age'] }}</td>
+                </tr>
+                <tr>
+                    <th>Порода</th>
+                    <td>{{ data['genus'] }}</td>
+                </tr>
+                <tr>
+                    <th>Пол</th>
+                    <td>{{ data['gender'] }}</td>
+                </tr>
+                <tr>
+                    <th>Статус</th>
+                    <td>{{ data['status'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% if adoptions %}
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Контакт</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                        {% if current_user.role < 3 %}
+                            <th>Действия</th>
+                        {% endif %}
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in adoptions %}
+                        <tr>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.contact }}</td>
+                            <td>{{ i.date }}</td>
+                            <td>{{ i.status }}</td>
+                            {% if current_user.role < 3 %}
+                            <td>
+                                <a class="btn btn-primary" href="{{ url_for('main.accept', animal_id = data['id'], adoption_id = i.id) }}">Принять</a>
+                                <a class="btn btn-danger" href="{{ url_for('main.reject', animal_id = data['id'], adoption_id = i.id) }}">Отменить</a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <div class="modal fade" id="adoptModal" tabindex="-1" aria-labelledby="adoptModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 id="modaltext">
+                        Вы уверены, что хотите усыновить животное?
+                    </h4>
+                        <form method="post" id="adoptModalForm">
+                            <label for="contact">Ваш контакт</label>
+                            <input type="email" name="contact" id="contact" class="form-control" required>
+                            <div class="mt-4">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </div>                    
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if current_user.is_authenticated %}
+    {% if current_user.role == 3 and can_adopt %}
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adoptModal">Подать заявку</button>
+    {% endif %}
+    {% endif %}
+
+</div>
+{% endblock %}

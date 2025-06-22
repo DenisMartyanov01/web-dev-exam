@@ -1,0 +1,42 @@
+body {
+    font-size: 1.25rem;
+}
+
+.avatar {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.comment {
+    display:flex;
+}
+
+.reply {
+    margin-left: 100px;
+}
+
+.vert-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment img, .reply img {
+
+    margin-right: 20px;
+}
+
+.post button {
+    stroke-width: 0px;
+    background-color: rgb(68, 71, 255);
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+footer {
+    background-color: whitesmoke;
+    padding: 10px;
+}
+footer p {
+    margin: 0;
+}

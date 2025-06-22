@@ -1,0 +1,68 @@
+{% macro create_from(action, data={}, errors = {}) %}
+<form method="post" enctype="multipart/form-data">
+  {% if action == 'create' %}
+    <div>
+  <label for="photos">Фото животного:</label>
+  <input type="file" id="photos" name="photos" multiple accept="image/*" onchange="previewImages(event)">
+</div>
+
+<div id="image-preview" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+</div>
+
+<script>
+function previewImages(event) {
+  const input = event.target;
+  const preview = document.getElementById('image-preview');
+  
+  preview.innerHTML = ''; 
+  
+  if (input.files && input.files.length > 0) {
+    for (let i = 0; i < input.files.length; i++) {
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        const imgContainer = document.createElement('div');
+        imgContainer.style.position = 'relative';
+        imgContainer.style.margin = '5px';
+        
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.maxHeight = '200px';
+        img.style.maxWidth = '200px';
+        img.style.objectFit = 'cover';
+        
+        imgContainer.appendChild(img);
+        preview.appendChild(imgContainer);
+      }
+      
+      reader.readAsDataURL(input.files[i]);
+    }
+  }
+}
+</script>
+  {% endif %}
+  <div>
+      <label for="name" class="form-label">Имя</label>
+      <input type="text" name="name" id="name" class="form-control" value="{{ data.get('name', '') }}" required>
+  </div>
+  <div>
+      <label for="description" class="form-label">Описание</label>
+      <input type="text" name="description" id="description" class="form-control" value="{{ data.get('description', '') }}" required>
+  </div>
+  <div>
+      <label for="age" class="form-label">Возраст</label>
+      <input type="text" name="age" id="age" class="form-control" value="{{ data.get('age', '') }}" required>
+  </div>
+  <div>
+      <label for="genus" class="form-label">Порода</label>
+      <input type="text" name="genus" id="genus" class="form-control" value="{{ data.get('genus', '') }}" required>
+  </div>
+  <div>
+      <label for="gender" class="form-label">Пол</label>
+      <input type="text" name="gender" id="gender" class="form-control" value="{{ data.get('gender', '') }}" required>
+  </div>
+  <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+  </div>
+</form>
+{% endmacro %}

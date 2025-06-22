@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Порода</th>
+            <th>Возраст</th>
+            <th>Пол</th>
+            <th>Статус</th>
+            <th>Кол-во заявок</th>
+            <th>Фотография</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.genus }}</td>
+                <td>{{ i.age }}</td>
+                <td>{{ i.gender }}</td>
+                <td>{{ i.status }}</td>
+                <td>{{ i.count }}</td>
+                <td>
+                    {% for photo in photos[loop.index -1 ] %}
+                        <img src="{{ url_for('images', filename = photo) }}" alt="{{photo}}" style="max-width: 200px;">
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{{ url_for('main.show', animal_id = i['id']) }}">Просмотр</a>
+                    {% if current_user.role == 1 or current_user.role == 2 %}
+                        <a class="btn btn-primary" href="{{ url_for('main.edit', animal_id = i['id']) }}">Редактировать</a>
+                        {% if current_user.role == 1 %}
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-animal-id="{{ i['id'] }}" 
+                                data-animal-name="{{ i.name }}">
+                                Удалить
+                            </button>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Удаление пользователя</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 id="modaltext">
+                    Вы уверены, что хотите удалить животное?
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                <form method="post" id="deleteModalForm">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% if current_user.role == 1 %}
+    <a class="btn btn-primary" href="{{ url_for('main.create') }}">Создать</a>
+{% endif %}
+
+{% if index > 4 %}
+<a href="{{ url_for('main.main', index=index - 5) }}"> Назад </a>
+{% endif %}
+<a href="{{ url_for('main.main', index=index + 5) }}"> Вперед </a>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='animal_delete_modal.js') }}"></script>
+{% endblock %}
